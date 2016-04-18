@@ -7,11 +7,6 @@ function Article (opts) {
   this.publishedOn = opts.publishedOn;
 }
 
-// DONE: Instead of a global `articles = []` array, let's track this list of all articles directly on
-// Article <-- the **constructor function**. Note: ".all" is NOT on the prototype. In JS, functions are
-// objects; you can add properties to any function, at any time. In this app, we have an array of Article
-// objects that we want to build; that array does not belong in Article.prototype since that array is
-// "larger" than any single Article.
 Article.all = [];
 
 Article.prototype.toHtml = function() {
@@ -24,13 +19,6 @@ Article.prototype.toHtml = function() {
   return template(this);
 };
 
-// DONE: There are some other functions that also relate to articles across the board, rather than
-// just single instances. Object-oriented programming would call these "class-level" functions,
-// that are relevant to the entire "class" of objects that are Articles.
-
-// DONE: This function will take the rawData, how ever it is provided,
-// and use it to instantiate all the articles. This code is moved from elsewhere, and
-// encapsulated in a simply-named function for clarity.
 Article.loadAll = function(rawData) {
   rawData.sort(function(a,b) {
     return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
