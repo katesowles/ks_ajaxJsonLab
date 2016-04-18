@@ -31,14 +31,17 @@ Article.loadAll = function(rawData) {
 
 // This function will retrieve the data from either a local or remote source,
 // and process it, then hand off control to the View.
+
 Article.fetchAll = function() {
   if (localStorage.rawData) {
-    // When rawData is already in localStorage,
-    // we can load it by calling the .loadAll function,
     // and then render the index page (using the proper method on the articleView object).
-    Article.loadAll(//TODO: What do we pass in here to the .loadAll function?
-    );
-    articleView.someFunctionToCall/*()*/; //TODO: Change this fake method call to the correct one that will render the index page.
+    Article.loadAll(rawData);
+    articleView.someFunctionToCall();
+
+    //TODO: Change this fake method call to the correct one that will render the index page.
+
+    articleView.initIndexPage();
+
   } else {
     // TODO: When we don't already have the rawData in local storage, we need to get it from the JSON file,
     //       which simulates data on a remote server. Run live-server or pushstate-server!
