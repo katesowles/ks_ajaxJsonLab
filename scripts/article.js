@@ -40,13 +40,13 @@ Article.fetchAll = function() {
 
   } else {
 
-    var newData = $.getJSON( "/data/hackerIpsum.json" )
+    var newData = $.getJSON( '/data/hackerIpsum.json' );
 
     newData.done(function (data) {
       Article.loadAll(data);
       localStorage.rawData = JSON.stringify(data);
       articleView.initIndexPage();
 
-    })
+    });
   }
 };
